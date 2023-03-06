@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "f208684e-f5e9-4405-b641-9a7552ac9bc2",
+		"name": "Spring Mock Test Suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21616232"
+	},
+	"item": [
+		{
+			"name": "Get All Albums",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/albums",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Albums By Artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/albums/{{Artist Name}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums",
+						"{{Artist Name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Track To Album",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Song2\",\r\n    \"length\": \"2.5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/albums/{{Album Id}}/addtrack",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums",
+						"{{Album Id}}",
+						"addtrack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Album",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"artist\": \"The Realer MC\",\r\n        \"name\": \"Album 2\",\r\n        \"tracks\": [\r\n            {\r\n                \"name\": \"Song2\",\r\n                \"length\": 2.5\r\n            },\r\n            {\r\n                \"name\": \"Song3\",\r\n                \"length\": 3.2\r\n            }\r\n        ]\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/albums",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Track From Album",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/albums/{{Album Id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums",
+						"{{Album Id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Album Id",
+			"value": "1"
+		},
+		{
+			"key": "Artist Name",
+			"value": "The Real MC"
+		}
+	]
+}
