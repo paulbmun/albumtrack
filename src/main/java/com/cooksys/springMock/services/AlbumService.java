@@ -8,5 +8,4 @@ public interface AlbumService {
 
 	List<AlbumResponseDto> getAllAlbums();
 
-
 }

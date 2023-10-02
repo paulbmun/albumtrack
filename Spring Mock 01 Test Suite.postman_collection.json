@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f208684e-f5e9-4405-b641-9a7552ac9bc2",
-		"name": "Spring Mock Test Suite",
+		"_postman_id": "5325019e-d766-4602-bc40-51b2f8b9e8bd",
+		"name": "Spring Mock 01 Test Suite",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21616232"
+		"_exporter_id": "20241939"
 	},
 	"item": [
 		{
@@ -61,7 +61,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Song2\",\r\n    \"length\": \"2.5\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Must Be Dreaming\",\r\n    \"length\": \"4.02\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,7 +69,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/albums/{{Album Id}}/addtrack",
+					"raw": "localhost:8080/albums/{{Album Id}}/addTrack",
 					"host": [
 						"localhost"
 					],
@@ -77,7 +77,7 @@
 					"path": [
 						"albums",
 						"{{Album Id}}",
-						"addtrack"
+						"addTrack"
 					]
 				}
 			},
@@ -90,7 +90,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n    {\r\n        \"artist\": \"The Realer MC\",\r\n        \"name\": \"Album 2\",\r\n        \"tracks\": [\r\n            {\r\n                \"name\": \"Song2\",\r\n                \"length\": 2.5\r\n            },\r\n            {\r\n                \"name\": \"Song3\",\r\n                \"length\": 3.2\r\n            }\r\n        ]\r\n    }\r\n",
+					"raw": "\r\n    {\r\n        \"artist\": \"Björk\",\r\n        \"name\": \"Post\",\r\n        \"tracks\": [\r\n            {\r\n                \"name\": \"Hyperballad\",\r\n                \"length\": 5.21\r\n            },\r\n            {\r\n                \"name\": \"Possibly Maybe\",\r\n                \"length\": 5.06\r\n            }\r\n        ]\r\n    }\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Track From Album",
+			"name": "Delete Album",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -130,6 +130,26 @@
 			"response": []
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "Album Id",
@@ -137,7 +157,7 @@
 		},
 		{
 			"key": "Artist Name",
-			"value": "The Real MC"
+			"value": "Frou Frou"
 		}
 	]
 }

@@ -1,7 +1,5 @@
 package com.cooksys.springMock;
 
-import java.util.Arrays;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,38 +17,37 @@ public class Seeder implements CommandLineRunner {
 	private final AlbumRepository albumRepository;
 	private final TrackRepository trackRepository;
 	
-
 	@Override
 	public void run(String... args) throws Exception {
 		
 		Album album1 = new Album();
-		album1.setName("Album 1");
-		album1.setArtist("The Real MC");
+		album1.setName("Details");
+		album1.setArtist("Frou Frou");
+		
+		albumRepository.saveAndFlush(album1);
 		
 		Track track1 = new Track();
-		track1.setName("Song1");
-		track1.setArtist("The Real MC");
-		track1.setLength(2.20);
+		track1.setName("Let Go");
+		track1.setArtist("Frou Frou");
+		track1.setLength(4.14);
 		
 		Track track2 = new Track();
-		track2.setName("Song2");
-		track2.setArtist("The Real MC");
-		track2.setLength(2.40);
+		track2.setName("Breathe In");
+		track2.setArtist("Frou Frou");
+		track2.setLength(4.37);
 				
 		Track track3 = new Track();
-		track3.setName("Song3");
-		track3.setArtist("The Real MC");
-		track3.setLength(3.20);
+		track3.setName("It's Good To Be In Love");
+		track3.setArtist("Frou Frou");
+		track3.setLength(4.39);
 		
-		albumRepository.save(album1);
-		trackRepository.saveAll(Arrays.asList(track1, track2, track3));
 		track1.setAlbum(album1);
 		track2.setAlbum(album1);
 		track3.setAlbum(album1);
-		album1.setTracks(Arrays.asList(track1, track2, track3));
 		
-		albumRepository.saveAndFlush(album1);
 		trackRepository.saveAndFlush(track1);
+		trackRepository.saveAndFlush(track2);
+		trackRepository.saveAndFlush(track3);
 		
 	}
 

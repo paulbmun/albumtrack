@@ -19,8 +19,8 @@ public class AlbumController {
 	private final AlbumService albumService;
 	
 	@GetMapping()
-	public List<AlbumResponseDto> getAllAlbums () {
+	public List<AlbumResponseDto> getAllAlbums() {
 		return albumService.getAllAlbums();
 	}
-
+	
 }

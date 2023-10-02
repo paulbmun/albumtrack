@@ -1,7 +1,5 @@
 package com.cooksys.springMock.dtos;
 
-import java.util.List;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

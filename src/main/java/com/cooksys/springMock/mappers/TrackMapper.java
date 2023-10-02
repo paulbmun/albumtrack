@@ -15,8 +15,8 @@ public interface TrackMapper {
 	
 	List<TrackResponseDto> entitiesToDtos(List<Track> tracks);
 	
-	Track requestDtoToEntity(TrackRequestDto track);
+	Track dtoToEntity(TrackRequestDto track);
 	
-	List<Track> requestDtosToEntities(List<TrackRequestDto> tracks);
+	List<Track> dtosToEntities(List<TrackRequestDto> tracks);
 
 }

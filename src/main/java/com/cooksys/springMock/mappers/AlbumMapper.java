@@ -11,10 +11,10 @@ import com.cooksys.springMock.entities.Album;
 @Mapper(componentModel = "spring")
 public interface AlbumMapper {
 
-	AlbumResponseDto entityToResponseDto(Album album);
+	AlbumResponseDto entityToDto(Album album);
 	
-	List<AlbumResponseDto> entitiesToResponseDtos(List<Album> albums);
+	List<AlbumResponseDto> entitiesToDtos(List<Album> albums);
 	
-	Album requestDtoToEntity(AlbumRequestDto album);
+	Album dtoToEntity(AlbumRequestDto album);
 	
 }
