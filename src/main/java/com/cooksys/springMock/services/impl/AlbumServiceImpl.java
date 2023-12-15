@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,35 +31,18 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<AlbumResponseDto> getAlbumsByArtist(String artistName) {
+    public List<AlbumResponseDto> geAlbumsByArtist(String artistName) {
         List<Album> albums = albumRepository.findByArtist(artistName);
 
         return albumMapper.entitiesToDtos(albums);
     }
 
-
     @Override
-    public AlbumResponseDto createAlbum(AlbumRequestDto albumRequestDto) {
-        Album album = albumMapper.dtoToEntity(albumRequestDto);
-        album.setArtist(album.getArtist());
-        albumRepository.saveAndFlush(album);
-        return albumMapper.entityToDto(album);
-    }
-
-    @Override
-    public AlbumResponseDto deleteAlbum(Long albumID) {
-        Optional<Album> optionalAlbum = albumRepository.findById(albumID);
-        Album album = optionalAlbum.get();
-        albumRepository.delete(album);
-        return albumMapper.entityToDto(albumRepository.saveAndFlush(album));
-    }
-
-    @Override
-    public AlbumResponseDto addTrackToAlbum(Long albumID, TrackRequestDto trackRequestDto) {
-        Album album = albumRepository.findById(albumID).get();
+    public AlbumResponseDto addTrackToAlbum(Long albumId, TrackRequestDto trackRequestDto) {
+        Album album = albumRepository.findById(albumId).get();
         Track track = trackMapper.dtoToEntity(trackRequestDto);
 
-        album.setArtist(album.getArtist());
+        track.setArtist(album.getArtist());
         track.setAlbum(album);
 
         trackRepository.saveAndFlush(track);
@@ -68,5 +50,27 @@ public class AlbumServiceImpl implements AlbumService {
         album.getTracks().add(track);
 
         return albumMapper.entityToDto(albumRepository.saveAndFlush(album));
+    }
+
+    @Override
+    public AlbumResponseDto createAlbum(AlbumRequestDto albumRequestDto) {
+        Album album = albumMapper.dtoToEntity(albumRequestDto);
+        albumRepository.saveAndFlush(album);
+
+        for (Track track : album.getTracks()) {
+            track.setAlbum(album);
+            track.setArtist(album.getArtist());
+            trackRepository.saveAndFlush(track);
+        }
+
+        return albumMapper.entityToDto(album);
+    }
+
+    @Override
+    public AlbumResponseDto deleteAlbum(Long albumId) {
+        Album album = albumRepository.findById(albumId).get();
+        trackRepository.deleteAll(album.getTracks());
+        albumRepository.delete(album);
+        return albumMapper.entityToDto(album);
     }
 }

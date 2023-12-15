@@ -10,11 +10,11 @@ public interface AlbumService {
 
 	List<AlbumResponseDto> getAllAlbums();
 
+	List<AlbumResponseDto> geAlbumsByArtist(String artistName);
+
+	AlbumResponseDto addTrackToAlbum(Long albumId, TrackRequestDto trackRequestDto);
+
 	AlbumResponseDto createAlbum(AlbumRequestDto albumRequestDto);
 
-	List<AlbumResponseDto> getAlbumsByArtist(String artistName);
-
-	AlbumResponseDto deleteAlbum(Long albumID);
-
-	AlbumResponseDto addTrackToAlbum(Long albumID, TrackRequestDto trackRequestDto);
+	AlbumResponseDto deleteAlbum(Long albumId);
 }
