@@ -21,12 +21,12 @@ public class AlbumController {
 		return albumService.getAllAlbums();
 	}
 
-	@GetMapping("/albumName")
+	@GetMapping("/{albumName}")
 	public List<AlbumResponseDto> getAlbumsByArtist(@PathVariable String artistName) {
 		return albumService.geAlbumsByArtist(artistName);
 	}
 
-	@PatchMapping("/albumId/addTrack")
+	@PatchMapping("/{albumId}/addTrack")
 	public AlbumResponseDto addTrackToAlbum(@PathVariable Long albumId, @RequestBody TrackRequestDto trackRequestDto) {
 		return albumService.addTrackToAlbum(albumId, trackRequestDto);
 	}
@@ -36,7 +36,7 @@ public class AlbumController {
 		return albumService.createAlbum(albumRequestDto);
 	}
 
-	@DeleteMapping("/albumId")
+	@DeleteMapping("/{albumId}")
 	public AlbumResponseDto deleteAlbum(@PathVariable Long albumId) {
 		return albumService.deleteAlbum(albumId);
 	}
