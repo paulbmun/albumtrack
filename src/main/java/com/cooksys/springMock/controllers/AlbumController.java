@@ -21,7 +21,7 @@ public class AlbumController {
 		return albumService.getAllAlbums();
 	}
 
-	@GetMapping("/{albumName}")
+	@GetMapping("/{artistName}")
 	public List<AlbumResponseDto> getAlbumsByArtist(@PathVariable String artistName) {
 		return albumService.geAlbumsByArtist(artistName);
 	}
